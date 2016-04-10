@@ -16,6 +16,68 @@
       <button id="disableBlur" style="display: none;">Disable blur</button>
       <input id="blurSlider" style="display: none;" type="range" min="1" max="200" value="200" />
     </div>
+    <script>
+     var blur = $('#blur');
+     var disableBlur = $('#disableBlur');
+     var blurSlider = $('#blurSlider');
+     
+     var backgroundBlur = null;
+
+function addBackgroundBlurEffect() {
+  blur.click(enableBackgroundBlur);
+  disableBlur.click(disableBackgroundBlur);
+}
+
+function enableBackgroundBlur() {
+  // Enable background blur.
+  backgroundBlur = gapi.hangout.av.effects.createBackgroundBlur();
+  backgroundBlur.setAlphaThresholdAutoUpdating(true);
+  backgroundBlur.setVisible(true);
+
+  // Manually control alpha threshold for background recognition.
+  backgroundBlur.setAlphaThresholdAutoUpdating(false);
+  backgroundBlur.setAlphaThreshold(200);
+  
+  blurSlider.change(function(){
+    backgroundBlur.setBlurWindowSize(parseInt(this.value));
+  });
+  
+  blur.hide();
+  disableBlur.show();
+  blurSlider.show();
+}
+
+function disableBackgroundBlur() {
+  // Disable background blur.
+  backgroundBlur.setVisible(false);
+  
+  blur.show();
+  disableBlur.hide();
+  blurSlider.unbind();
+  blurSlider.hide();
+}
+
+// Kicks off app and attaches all listeners.
+function startApp() {
+ addBackgroundBlurEffect();
+}
+
+
+function init() {
+  gapi.hangout.onApiReady.add(
+      function(eventObj) {
+        startApp();
+      });
+}
+
+// Add API listener immediately.  If you need an
+// OAuth 2.0 access token, your startup will need to
+// be different.
+init();
+     
+     
+     
+    </script>
     ]]>
   </Content>
 </Module>
