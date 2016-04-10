@@ -8,7 +8,14 @@
     <![CDATA[
       <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
       <script src="//hangoutscdn.azurewebsites.net/demo.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
       <!-- Your application code -->
+      
+    <div id="blurControls">
+      <button id="blur">Blur my background!</button>
+      <button id="disableBlur" style="display: none;">Disable blur</button>
+      <input id="blurSlider" style="display: none;" type="range" min="1" max="200" value="200" />
+    </div>
     ]]>
   </Content>
 </Module>
