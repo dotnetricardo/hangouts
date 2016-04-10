@@ -7,7 +7,7 @@
   <Content type="html">
     <![CDATA[
       <script src="//plus.google.com/hangouts/_/api/v1/hangout.js"></script>
-      <script src="https://raw.githubusercontent.com/dotnetricardo/hangouts/master/demo.js"></script>
+      <script src="//hangoutscdn.azurewebsites.net/demo.js"></script>
       <!-- Your application code -->
     ]]>
   </Content>
